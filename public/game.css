@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'paybooc-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+button{
+  font-family: 'paybooc-Bold';       
+}
+
+.container{
+    margin:0 auto;
+    width:576px;
+    min-height: 700px;
+    padding:20px;
+    background-color: antiquewhite;
+}
+
+.title{
+    text-align: center;
+}
+
+.centerWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
