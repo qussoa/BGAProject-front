@@ -11,24 +11,25 @@ const MainContainer = () => {
         setIsStart(true)
     }
 
-    axios({
-        url:"http://localhost:8080/bow/start",
-        method : "post",
-        data : {
-            list : [
-                [1,2],
-                [1,2],
-                [1,2],
-                [1,2],
-                [1,2],
-                [1,2],
-                [1,2],
-                [1,2],
-                [1,2],
-                [1,2],
-            ]
-        }
-    })
+    const [player, setPlayer] = useState({
+        list:[
+            [10,0],
+            [10,0],
+            [10,0],
+            [10,0],
+            [10,0],
+            [10,0],
+            [10,0],
+            [10,0],
+            [10,0],
+            [10,10,10],
+        ],
+        name : "",
+        result:[
+
+        ]
+    });
+
 
     return ( 
         <div className="container">
@@ -41,7 +42,7 @@ const MainContainer = () => {
                         </div>
                     </>
                 ) : (
-                    <PlayerContainer/>
+                    <PlayerContainer setPlayer = {setPlayer} player ={player}/>
                 )
             }
         </div>

@@ -1,53 +1,42 @@
 import React, { useState } from 'react';
 
 const GameContainer = (props) => {
-    
-    // const {playList} = props;
 
-    const [playerList, setPlayerList] = useState(playerList)
+    const { player, setPlayer } = props;
 
-    const playingGame = ()=>{
-        playerList.find((item,index)=>{
-
-        })
-    }
 
     return (
         <>
             <div className="centerWrapper">
-                <strong style={{fontSize:"30px"}}>BOWLING SCORE BOARD</strong>
+                <strong style={{ fontSize: "30px" }}>BOWLING SCORE BOARD</strong>
 
             </div>
             <div>
-                {
-                    playerList.map(player=>{
-                        return (
-                            <div>
-                                {player.name}
-                                {player.round.map(item=>{
-                                    return (
-                                        <>
-                                            <div>
-                                                {item.hitpin.map(hit=>{
-                                                    return (
-                                                        <>
-                                                            {hit}/
-                                                        </>
-                                                    )
-                                                })}
-                                                {item.roundScore}
-                                            </div>
-                                            
-                                        </>
-                                    )
+                <span>
+                    {player.name}
+                </span>
+                <br />
+                <div style={{display:"flex"}}>
+                    {player.result.map((frame,index)=>{
+                        console.log(frame)
+                        return(
+                            <div style={{margin:"10px"}}>
+                                <div>
+                                    {index+1}F
+                                </div>
+                                <hr/>
+                                {frame.turnScore.map(score=>{
+                                    return <span>{score} </span>
                                 })}
+                                <hr/>
+                                {frame.frameScore}
                             </div>
                         )
-                    })
-                }
+                    })}
+                </div>
             </div>
         </>
     );
 }
- 
+
 export default GameContainer;
