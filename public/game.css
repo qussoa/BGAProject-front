@@ -9,9 +9,13 @@ button{
   font-family: 'paybooc-Bold';       
 }
 
+.playerInput{
+    width: 30px;
+}
+
 .container{
     margin:0 auto;
-    width:576px;
+    width:900px;
     min-height: 700px;
     padding:20px;
     background-color: antiquewhite;

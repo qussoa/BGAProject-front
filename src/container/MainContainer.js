@@ -11,25 +11,9 @@ const MainContainer = () => {
         setIsStart(true)
     }
 
-    const [player, setPlayer] = useState({
-        list:[
-            [10,0],
-            [10,0],
-            [10,0],
-            [10,0],
-            [10,0],
-            [10,0],
-            [10,0],
-            [10,0],
-            [10,0],
-            [10,10,10],
-        ],
-        name : "",
-        result:[
-
-        ]
-    });
-
+    // 플레이어가 담긴 리스트
+    const [playerList, setPlayerList] = useState([]);
+    const [gameResultList, setGameResultList] = useState([]);
 
     return ( 
         <div className="container">
@@ -42,7 +26,7 @@ const MainContainer = () => {
                         </div>
                     </>
                 ) : (
-                    <PlayerContainer setPlayer = {setPlayer} player ={player}/>
+                    <PlayerContainer setPlayerList={setPlayerList} playerList={playerList} gameResultList={gameResultList} setGameResultList={setGameResultList}/>
                 )
             }
         </div>
