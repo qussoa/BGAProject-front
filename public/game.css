@@ -5,28 +5,84 @@
     font-style: normal;
 }
 
+*{
+    font-family: 'paybooc-Bold';
+}
+.topLine{
+    background-color: #C12D39;
+    height: 10px;
+}
+
+.footerStyle{
+    background-color: #23262a;
+    color: #9e9e9e;
+    font-size: 0.75rem;
+    padding: 10px;
+}
+
+.spanDiv{
+    margin: 10px;
+}
+
 button{
   font-family: 'paybooc-Bold';       
 }
 
 .playerInput{
-    width: 30px;
+    width: 40px;
 }
 
 .container{
     margin:0 auto;
-    width:900px;
-    min-height: 700px;
+    width:1100px;
+    min-height: 800px;
     padding:20px;
-    background-color: antiquewhite;
+    background-color: #fff;
 }
 
 .title{
+    margin-top: 300px;
     text-align: center;
+    font-size: 40px;
+}
+
+.subTitle{
+    margin-top: 300px;
+    text-align: center;
+    font-size: 20px;
 }
 
 .centerWrapper{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+button{
+    outline: none;
+    border: none;
+    background-color: #fff;
+    font-size: 20px;
+    margin-top: 10px;
+    
+}
+
+/* .inputstyle{
+    outline: none;
+    border-radius: 5px;
+} */
+
+.nameStyle{
+    margin-top: 20px;
+}
+
+.itemCenter{
+    text-align: center;
+    align-content: center;
+    margin-top: 40px;
+}
+
+.scoreBox{
+    display: flex;
+    justify-content: center;
 }

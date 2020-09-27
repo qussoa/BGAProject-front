@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 
 const PlayerComponent = (props) => {
-
+    
+    // 플레이어 점수를 입력받는 component
     const { playerName, playerList, setPlayerList } = props;
     const [isSaved, setIsSaved] = useState(false);
     const [scoreList, setScoreList] = useState({
@@ -41,6 +42,11 @@ const PlayerComponent = (props) => {
     }
 
     // input Change Event
+    /**
+     *  프레임에서 첫번째 턴과 두번째 턴의 합이 10을 넘으면 안됌
+     *  마지막 프레임일 경우에 스트라이크나 스페어 처리시 
+     *  input value가 세번째 턴에서 MAX VALUE가 10
+     */
     const handleInputChange = (e, index)=>{
         const {name, value} = e.target;
         const frame = scoreList[name];
@@ -56,14 +62,23 @@ const PlayerComponent = (props) => {
             }
         // 10 프레임일때
         }else{
-            if(target[0] != 10 && target[0]+target[1]>10){
-                target[index] = 0;
-            }else if(target[1] != 10 && target[1]+target[2]>10){
-                target[index] = 0;
-            }else if(value > 10){
-                target[index] = 10
+            if(target[0] != 10){
+                if(target[0]+target[1] > 10){
+                    target[index] = 0;   
+                }
+            }else if(target[1] != 10){
+                if(target[1]+target[2] > 10){
+                    target[index] = 0;
+                }
             }
+            
+            // 첫번째 턴과 두번째 턴을 합했을때 10이 안넘으면 세번째 턴은 없으므로 0으로 세팅
+            if(target[0] + target[1] < 10){
+                target[2]=0;
+            }
+
         }
+
         setScoreList({
             ...scoreList, [name]: target
         })
@@ -122,7 +137,9 @@ const PlayerComponent = (props) => {
                     <div style={{textAlign:"center"}}>10F</div>
                     <input className={"playerInput"}  name={"F10"} value={scoreList.F10[0]} onChange={(e)=>{handleInputChange(e,0)}} type={"number"} max={10} min={0}/>
                     <input className={"playerInput"}  name={"F10"} value={scoreList.F10[1]} onChange={(e)=>{handleInputChange(e,1)}} type={"number"} max={10} min={0}/>
-                    <input className={"playerInput"}  name={"F10"} value={scoreList.F10[2]} onChange={(e)=>{handleInputChange(e,2)}} type={"number"} max={10} min={0}/>
+                    {
+                        scoreList.F10[0]+scoreList.F10[1] >= 10 && <input className={"playerInput"}  name={"F10"} value={scoreList.F10[2]} onChange={(e)=>{handleInputChange(e,2)}} type={"number"} max={10} min={0}/>
+                    }
                 </div>
             </>
         )
@@ -135,6 +152,7 @@ const PlayerComponent = (props) => {
             </div>
             <div style={{display : "flex", justifyContent:"center"}}>
                 {inputList()}
+                {/* isSaved가 false이면 저장을 안했으니 저장하는 버튼 렌더, 반대일경우 취소버튼 렌더 */}
                 {!isSaved ? (
                     <button onClick={()=>{ChangeObjectToArray(); setIsSaved(true);}}>저장</button>
                 ) : (
